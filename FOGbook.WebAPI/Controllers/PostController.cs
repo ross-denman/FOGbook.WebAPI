@@ -7,6 +7,7 @@ using System.Web.Http;
 
 namespace FOGbook.WebAPI.Controllers
 {
+
     [Authorize]
     public class PostController : ApiController
     {
@@ -39,6 +40,5 @@ namespace FOGbook.WebAPI.Controllers
                 return postService;
             }
 
-
-        }
+  }
 }
