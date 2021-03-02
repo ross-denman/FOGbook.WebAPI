@@ -9,23 +9,20 @@ using System.Threading.Tasks;
 
 namespace FOGBook.Services
 {
-    public class PostService
+    public class CommentService
     {
         private readonly Guid _userId;
 
-        public PostService(Guid userId)
+        public CommentService(Guid userId)
         {
             _userId = userId;
         }
 
-        public bool CreatePost(PostCreate model)  
+        public bool CreateComment(CommentCreate model)
         {
-            Post entity = new Post()
+            var entity = new Comment()
             {
-
-                PostAuthor = _userId,
-
-                Title = model.Title,
+                CommentAuthor = _userId,
                 Text = model.Text,
                 CreatedUtc = DateTime.Now
 
@@ -33,27 +30,24 @@ namespace FOGBook.Services
 
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.Posts.Add(entity);
+                ctx.Comments.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
         }
 
-        public IEnumerable<ListPost> GetPosts()
+        public IEnumerable<CommentCreate> GetComments()
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
                     ctx
-                    .Posts
-
-                    .Where(e => e.PostAuthor == _userId)
-
+                    .Comments
+                    .Where(e => e.CommentAuthor == _userId)
                     .Select(
                         e =>
-                        new ListPost
+                        new CommentCreate
                         {
-                            PostId = e.PostId,
-                            Title = e.Title,
+                            CommentId = e.CommentId,
                             Text = e.Text,
                             CreatedUtc = e.CreatedUtc
                         }
@@ -62,4 +56,5 @@ namespace FOGBook.Services
             }
         }
     }
+}
 }
