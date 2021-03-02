@@ -18,7 +18,6 @@ namespace FOGbook.WebAPI.Controllers
             return Ok(replies);
         }
 
-
         public IHttpActionResult Post(ReplyCreate reply)
         {
             if (!ModelState.IsValid)

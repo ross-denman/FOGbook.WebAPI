@@ -39,7 +39,7 @@ namespace FOGbook.Data
         public DbSet<Comment>   Comments    { get; set; }
         public DbSet<Reply>     Replies     { get; set; }
 
-        // ----------------------------------------------------------------
+        // -----------------------------------------------------------------
 
     }
     public class IdentityUserLoginConfiguration : EntityTypeConfiguration<IdentityUserLogin>
