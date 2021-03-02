@@ -40,6 +40,18 @@ namespace FOGbook.WebAPI.Controllers
                 var postService = new PostService(userId);
                 return postService;
             }
+        public IHttpActionResult Put(PostEdit post)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var service = CreatePostService();
+
+            if (!service.UpdatePost(post))
+                return InternalServerError();
+
+            return Ok();
+        }
         public IHttpActionResult Delete(int id)
         {
             var service = CreatePostService();
