@@ -54,11 +54,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PostService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FOGBook.Data\FOGBook.Data.csproj">
+      <Project>{15dc4747-33d2-4152-86cc-b37f0ada96fd}</Project>
+      <Name>FOGBook.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FOGBook.Models\FOGBook.Models.csproj">
+      <Project>{081360b1-feb3-4261-9c5e-6d5fec3747b0}</Project>
+      <Name>FOGBook.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
