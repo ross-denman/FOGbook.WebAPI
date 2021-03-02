@@ -47,9 +47,10 @@ namespace FOGBook.Services
                         e =>
                         new ListReply
                         {
-                            Text = e.Text
-                        }
-                        );
+                            ReplyId = e.ReplyId,
+                            Text = e.Text,
+                            CreatedUtc = e.CreatedUtc
+                        });
                 return query.ToArray();
             }
         }

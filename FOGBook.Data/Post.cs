@@ -29,5 +29,7 @@ namespace FOGBook.Data
         public DateTimeOffset? ModifiedUtc { get; set; }
 
         public virtual Comment Comment { get; set; }
+        public virtual Reply Reply { get; set; }
+
     }
 }
