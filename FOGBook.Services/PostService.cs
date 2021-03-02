@@ -22,7 +22,9 @@ namespace FOGBook.Services
         {
             Post entity = new Post()
             {
+
                 PostAuthor = _userId,
+
                 Title = model.Title,
                 Text = model.Text,
                 CreatedUtc = DateTime.Now
@@ -43,7 +45,9 @@ namespace FOGBook.Services
                 var query =
                     ctx
                     .Posts
+
                     .Where(e => e.PostAuthor == _userId)
+
                     .Select(
                         e =>
                         new ListPost
