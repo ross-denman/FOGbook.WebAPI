@@ -1,4 +1,7 @@
-﻿using System;
+﻿using FOGBook.Models;
+using FOGBook.Services;
+using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -13,25 +16,23 @@ namespace FOGbook.WebAPI.Controllers
     {
             public IHttpActionResult Get()
             {
-                PostService noteService = CreatePostService();
+                PostService postService = CreatePostService();
                 var posts = postService.GetPosts();
                 return Ok(posts);
             }
-
             
-            public IHttpActionResult Post(NoteCreate note)
+            public IHttpActionResult Post(PostCreate post)
             {
                 if (!ModelState.IsValid)
                     return BadRequest(ModelState);
 
-                var service = CreateNoteService();
+                var service = CreatePostService();
 
-                if (!service.CreateNote(note))
+                if (!service.CreatePost(post))
                     return InternalServerError();
 
                 return Ok();
             }
-
 
             private PostService CreatePostService()
             {
@@ -39,6 +40,5 @@ namespace FOGbook.WebAPI.Controllers
                 var postService = new PostService(userId);
                 return postService;
             }
-
   }
 }

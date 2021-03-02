@@ -8,26 +8,19 @@ using System.Threading.Tasks;
 
 namespace FOGBook.Data
 {
-    public class Post
+    public class Comment
     {
         [Key]
-        public int PostId { get; set; }
-
-        [ForeignKey(nameof(Comment))]
-        public int? CommentId { get; set; }
-
-        [ForeignKey(nameof(Reply))]
-        public int? ReplyId { get; set; }
-
-        [Required]
-        public string Title { get; set; }
+        public int CommentId { get; set; }
         [Required]
         public string Text { get; set; }
         [Required]
-        public Guid PostAuthor { get; set; }
+        [ForeignKey(nameof(Reply))]
+        public int ReplyId { get; set; }
+        public Guid CommentAuthor { get; set; }
         public DateTimeOffset CreatedUtc { get; set; }
         public DateTimeOffset? ModifiedUtc { get; set; }
 
-        public virtual Comment Comment { get; set; }
+
     }
 }
