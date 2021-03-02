@@ -12,15 +12,20 @@ namespace FOGBook.Data
     {
         [Key]
         public int CommentId { get; set; }
+
+        [ForeignKey(nameof(Reply))]
+        public int? ReplyId { get; set; }
+
         [Required]
         public string Text { get; set; }
-        [Required]
-        [ForeignKey(nameof(Reply))]
-        public int ReplyId { get; set; }
-        public Guid CommentAuthor { get; set; }
+        
         public DateTimeOffset CreatedUtc { get; set; }
         public DateTimeOffset? ModifiedUtc { get; set; }
 
+        [Required]
+        public Guid CommentAuthor { get; set; }
+
+        public virtual Reply Reply { get; set; }
 
     }
 }
