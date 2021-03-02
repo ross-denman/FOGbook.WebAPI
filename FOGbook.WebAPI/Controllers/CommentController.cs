@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using FOGBook.Models;
+using FOGBook.Services;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +21,7 @@ namespace FOGbook.WebAPI.Controllers
         }
 
 
-        public IHttpActionResult Post(CreateComment comment)
+        public IHttpActionResult Post(CommentCreate comment)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);

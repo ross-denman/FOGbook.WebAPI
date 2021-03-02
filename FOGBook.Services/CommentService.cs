@@ -35,23 +35,20 @@ namespace FOGBook.Services
             }
         }
 
-        public IEnumerable<CommentCreate> GetComments()
+        public IEnumerable<ListComment> GetComments() // <<< changed to ListComment
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var query =
-                    ctx
-                    .Comments
+                var query = ctx.Comments
                     .Where(e => e.CommentAuthor == _userId)
-                    .Select(
-                        e =>
-                        new CommentCreate
+                    .Select(e =>
+                        
+                        new ListComment
                         {
                             CommentId = e.CommentId,
                             Text = e.Text,
                             CreatedUtc = e.CreatedUtc
-                        }
-                        );
+                        });
                 return query.ToArray();
             }
         }
