@@ -35,7 +35,7 @@ namespace FOGBook.Services
             }
         }
 
-        public IEnumerable<ReplyCreate> GetReplies()
+        public IEnumerable<ListReply> GetReplies()
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -45,7 +45,7 @@ namespace FOGBook.Services
                     .Where(e => e.ReplyAuthor == _userId)
                     .Select(
                         e =>
-                        new ReplyCreate
+                        new ListReply
                         {
                             Text = e.Text
                         }
