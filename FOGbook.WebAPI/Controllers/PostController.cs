@@ -40,5 +40,14 @@ namespace FOGbook.WebAPI.Controllers
                 var postService = new PostService(userId);
                 return postService;
             }
+        public IHttpActionResult Delete(int id)
+        {
+            var service = CreatePostService();
+
+            if (!service.DeletePost(id))
+                return InternalServerError();
+
+            return Ok();
+        }
   }
 }
