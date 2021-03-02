@@ -42,22 +42,16 @@ namespace FOGBook.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var query =
-                    ctx
-                    .Posts
-
-                    .Where(e => e.PostAuthor == _userId)
-
-                    .Select(
-                        e =>
-                        new ListPost
-                        {
-                            PostId = e.PostId,
-                            Title = e.Title,
-                            Text = e.Text,
-                            CreatedUtc = e.CreatedUtc
-                        }
-                        );
+                var query = ctx.Posts
+                            .Where(e => e.PostAuthor == _userId)
+                            .Select(e =>
+                                new ListPost
+                                {
+                                    PostId = e.PostId,
+                                    Title = e.Title,
+                                    Text = e.Text,
+                                    CreatedUtc = e.CreatedUtc
+                                });
                 return query.ToArray();
             }
         }
