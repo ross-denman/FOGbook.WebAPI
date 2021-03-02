@@ -2,6 +2,7 @@
 using System.Data.Entity.ModelConfiguration;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using FOGBook.Data;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -34,7 +35,7 @@ namespace FOGbook.Data
 
         // ----------------------------------------------------------------
 
-        public DbSet<Post> Post { get;set }
+        public DbSet<Post> Posts { get; set; }
 
         // ----------------------------------------------------------------
 
