@@ -57,8 +57,10 @@
     <Compile Include="CommentCreate.cs" />
     <Compile Include="ListComment.cs" />
     <Compile Include="ListPost.cs" />
+    <Compile Include="ListReply.cs" />
     <Compile Include="PostCreate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReplyCreate.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
